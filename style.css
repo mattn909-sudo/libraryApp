@@ -89,3 +89,19 @@ dialog::backdrop{
 .closeDialog:hover{
     background-color: red;
 }
+
+.bookCardContainer{
+    margin-top: 2rem;
+    margin-left: 2rem;
+    width: 50%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16%,1fr));
+    gap: 10px;
+    box-sizing: border-box;
+    
+}
+
+.bookCard{
+    background-color: aliceblue;
+    border-radius: 10px;
+}
