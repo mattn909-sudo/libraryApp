@@ -21,10 +21,12 @@ closeButton.addEventListener('click', ()=>{
 submitButton.addEventListener('click', ()=>{
     let myBook = new Book(bookInput.value,authorInput.value,pagesInput.value, boolRead.value);
     myBook.createCard();
+    console.log(boolRead.value)
     dialog.close();
     bookInput.value = null;
     authorInput.value = null;
     pagesInput.value = null;
+    boolRead.value = null;
 });
 
 function Book(bookTitle, author, pages, read){
@@ -50,13 +52,15 @@ Book.prototype.createCard = function() {
     deleteBtn.textContent = 'Remove Book';
     deleteBtn.classList.add('deleteButton');
     readBtn.classList.add('readButton');
-    if(this.read = "true"){
+    if(this.read == "true"){
         readBtn.textContent = "Mark as not read";
         newCard.style.backgroundColor = 'rgb(136,229,153)';
         deleteBtn.style.backgroundColor = 'rgb(136,229,153)';
+        console.log("bool is" + this.read)
     }
     else{
         readBtn.textContent = "Mark as read"
+        console.log("bool is" + this.read)
     }
     newCard.appendChild(title);
     newCard.appendChild(author);
@@ -66,6 +70,21 @@ Book.prototype.createCard = function() {
     cardContainer.appendChild(newCard);
     deleteBtn.addEventListener('click', ()=>{
         cardContainer.removeChild(newCard);
+    });
+    readBtn.addEventListener('click', ()=>{
+        console.log('deeezzzzz');
+        if(this.read == "false"){
+            readBtn.textContent = "Mark as not read";
+            newCard.style.backgroundColor = 'rgb(136,229,153)';
+            deleteBtn.style.backgroundColor = 'rgb(136,229,153)';
+            this.read = 'true'
+        }
+        else{
+            readBtn.textContent = "Mark as read";
+            this.read = 'false';
+            newCard.style.backgroundColor = 'buttonface';
+            deleteBtn.style.backgroundColor = 'buttonface';
+        }
     });
 
 }
